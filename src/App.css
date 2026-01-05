@@ -1,42 +1,168 @@
+/* Reset & Base */
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f4f6f8;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: #1f2937;
+}
+
+/* App Container */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 480px;
+  margin-top: 4rem;
   padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* Header */
+.header {
+  margin: 1.5rem 0 1rem;
   text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #111827;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* New Todo Form */
+.new-item-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.new-item-form input {
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
 }
 
-.card {
-  padding: 2em;
+.new-item-form input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
 }
 
-.read-the-docs {
-  color: #888;
+/* Buttons */
+.btn {
+  align-self: flex-start;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #4f46e5;
+  color: #ffffff;
+  transition: background 0.25s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  background: #4338ca;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn.btn-danger {
+  background: #dc2626;
+}
+
+.btn.btn-danger:hover {
+  background: #b91c1c;
+}
+
+/* Todo List */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Todo Item */
+.list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9fafb;
+  padding: 0.65rem 0.9rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.list li:hover {
+  background: #f1f5f9;
+}
+
+/* Todo Label */
+.list li label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  flex: 1;
+  color: #374151;
+}
+
+/* Hide Default Checkbox */
+.list li input {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid #9ca3af;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Checked State */
+.list li input:checked {
+  background: #4f46e5;
+  border-color: #4f46e5;
+}
+
+.list li input:checked::after {
+  content: "✔";
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+/* Completed Todo */
+.list li:has(input:checked) label {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+/* Empty State (optional) */
+.empty {
+  margin-top: 1rem;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.95rem;
 }
